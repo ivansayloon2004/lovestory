@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 
-import type { ViewerContext } from "@/lib/types";
+import type { ThemeMode, ViewerContext } from "@/lib/types";
 import { createClient } from "@/lib/supabase/browser";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -119,7 +119,11 @@ export function SettingsForm({ viewer }: SettingsFormProps) {
           </label>
           <label className="text-sm text-foreground/70">
             Theme
-            <select className="diary-input mt-2" value={themeMode} onChange={(event) => setThemeMode(event.target.value)}>
+            <select
+              className="diary-input mt-2"
+              value={themeMode}
+              onChange={(event) => setThemeMode(event.target.value as ThemeMode)}
+            >
               <option value="system">System</option>
               <option value="light">Light</option>
               <option value="dark">Dark</option>
