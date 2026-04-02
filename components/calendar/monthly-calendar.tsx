@@ -35,14 +35,14 @@ export function MonthlyCalendar({ month, entries, prevHref, nextHref }: MonthlyC
     <div className="space-y-4">
       <div className="paper-panel flex items-center justify-between p-5">
         <Link href={prevHref} className="soft-button-secondary">
-          ←
+          {"<"}
         </Link>
         <div className="text-center">
           <p className="eyebrow">Calendar view</p>
           <h2 className="mt-3 font-display text-4xl text-foreground">{formatMonthLabel(month)}</h2>
         </div>
         <Link href={nextHref} className="soft-button-secondary">
-          →
+          {">"}
         </Link>
       </div>
 
@@ -68,7 +68,7 @@ export function MonthlyCalendar({ month, entries, prevHref, nextHref }: MonthlyC
               key={key}
               className={cn(
                 "paper-panel min-h-[170px] p-4",
-                dayEntries.length && "border-accent/35 bg-white/90 dark:bg-white/10"
+                dayEntries.length > 0 ? "border-accent/35 bg-white/90 dark:bg-white/10" : undefined
               )}
             >
               <div className="flex items-center justify-between">
