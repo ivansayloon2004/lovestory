@@ -8,13 +8,20 @@ type RichTextEditorProps = {
   placeholder?: string;
 };
 
-const actions = [
+type EditorAction = {
+  label: string;
+  command: string;
+  title: string;
+  value?: string;
+};
+
+const actions: EditorAction[] = [
   { label: "B", command: "bold", title: "Bold" },
   { label: "I", command: "italic", title: "Italic" },
-  { label: "• List", command: "insertUnorderedList", title: "Bullet list" },
-  { label: "1. List", command: "insertOrderedList", title: "Numbered list" },
+  { label: "Bullet List", command: "insertUnorderedList", title: "Bullet list" },
+  { label: "Numbered List", command: "insertOrderedList", title: "Numbered list" },
   { label: "Quote", command: "formatBlock", value: "blockquote", title: "Quote" }
-] as const;
+];
 
 export function RichTextEditor({ value, onChange, placeholder }: RichTextEditorProps) {
   const editorRef = useRef<HTMLDivElement | null>(null);
